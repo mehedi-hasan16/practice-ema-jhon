@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import Card from './Card';
+import Cart from '../Cart/Cart';
 
 const Shop = () => {
     const [products, setProducts]= useState([]);
@@ -17,7 +18,7 @@ const Shop = () => {
     return (
         <div className='flex justify-between'>
             <div>
-                <h1>All Products in here</h1>
+                <h1 className='text-2xl font-bold text-center p-3'>All Products in here</h1>
                 <div className='grid grid-cols-4 gap-5'>
                 {
                     products.map(product=><Card key={product.id} product={product} handelAddToCart={handelAddToCart}></Card>)
@@ -25,8 +26,7 @@ const Shop = () => {
                 </div>
             </div>
             <div className='bg-yellow-500 p-5'>
-                <h1 className='font-bold text-2xl mb-2'>Order Summary</h1>
-                <p>Total selected: {cart.length}</p>
+                <Cart cart={cart}></Cart>
 
             </div>
         </div>
